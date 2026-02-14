@@ -224,4 +224,4 @@ cargo xtask renode-image decide
 
 ## License
 
-MIT — see LICENSE file.
+Apache 2.0 — see LICENSE file.
