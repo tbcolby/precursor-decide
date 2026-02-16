@@ -6,7 +6,6 @@
 #![cfg_attr(target_os = "none", no_std)]
 #![cfg_attr(target_os = "none", no_main)]
 
-extern crate alloc;
 
 mod app;
 mod cards;
@@ -29,7 +28,7 @@ use num_traits::ToPrimitive;
 // Server name for xous names registration (underscored)
 const SERVER_NAME: &str = "_Decision Engine_";
 // App name for GAM registration (must match manifest context_name)
-const APP_NAME: &str = "Decide";
+const APP_NAME: &str = "Decision Engine";
 
 /// Opcodes for the application main loop.
 #[derive(Debug, num_derive::FromPrimitive, num_derive::ToPrimitive)]
@@ -64,8 +63,8 @@ fn main() -> ! {
     // Register UX with GAM
     let token = gam
         .register_ux(gam::UxRegistration {
-            app_name: alloc::string::String::from(APP_NAME),
-            ux_type: gam::UxType::Chat,
+            app_name: String::from(gam::APP_NAME_DECIDE),
+            ux_type: gam::UxType::Framebuffer,
             predictor: None,
             listener: sid.to_array(),
             redraw_id: AppOp::Redraw.to_u32().unwrap(),
